@@ -15,9 +15,7 @@ Session start ──▶ Claude reads session-insights.md (via CLAUDE.md instruct
 
     ... session ...
 
-Session end ────▶ Stop hook blocks if transcript was substantial (> 50KB)
-                  Claude writes 2-5 interaction insights, then stops
-
+On your schedule ▶ /session-insights:reflect — write session insights
 On your schedule ▶ /session-insights:curate — keep, merge, drop, or promote
 ```
 
@@ -65,7 +63,6 @@ Writing to this file is handled by the `session-insights` plugin; don't write to
 
 | Event | Behavior |
 |-------|----------|
-| **Stop** | If transcript > 50KB and insights file exists, blocks and asks Claude to reflect. Skips if already reflecting (loop prevention). |
 | **SessionStart** | If insights file > 200 lines, outputs a nudge that Claude relays to you. |
 
 ## Configuration
@@ -74,22 +71,17 @@ Tunable constants in the hook scripts:
 
 | Variable | File | Default | Purpose |
 |----------|------|---------|---------|
-| `MIN_TRANSCRIPT_KB` | `hooks/scripts/reflect-on-stop.bash` | 50 | Minimum transcript size to trigger auto-reflection |
 | `MAX_LINES` | `hooks/scripts/check-insights-size.bash` | 200 | Line count threshold for curation nudge |
 | `INSIGHTS_FILE` | both scripts | `~/.claude/memory/session-insights.md` | Path to insights file |
 
 ## Notes
 
-**Resumed sessions:** If you resume a session with `--continue` or `--resume`, the Stop hook will analyze the **entire** transcript again when you exit, including portions already reflected upon. This can result in duplicate or overlapping insights. Use `/curate` to merge similar observations after long multi-part sessions.
+**Resumed sessions:** If you resume a session with `--continue` or `--resume`, `/reflect` will analyze the **entire** transcript again when you exit, including portions already reflected upon. This can result in duplicate or overlapping insights. Use `/curate` to merge similar observations after long multi-part sessions.
 
 ## Design
 
-**Single source of truth:** The Stop hook reads `commands/reflect.md` at
-runtime and embeds its content in the blocking reason. No instruction
-duplication between the hook and the slash command.
-
 **Separation of concerns:**
-- `/reflect` and the Stop hook only *write* — no size awareness, no pruning
+- `/reflect` only *write* — no size awareness, no pruning
 - `/curate` only *prunes* — categorizes, merges, drops, occasionally promotes
 - The SessionStart hook only *nudges* — checks line count, surfaces a message
 
@@ -109,7 +101,7 @@ session-insights/
 │   ├── reflect.md               # /session-insights:reflect
 │   └── curate.md                # /session-insights:curate
 ├── hooks/
-│   ├── hooks.json               # Stop + SessionStart hook config
+│   ├── hooks.json               # SessionStart hook config
 │   └── scripts/
 │       ├── reflect-on-stop.bash     # Stop hook logic
 │       └── check-insights-size.bash # SessionStart hook logic

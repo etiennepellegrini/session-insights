@@ -2,7 +2,7 @@
 
 Observations from Claude Code sessions — interaction patterns, workflow
 preferences, and technical learnings that aren't captured elsewhere in
-the memory files. Written by Claude (via Stop hook or `/reflect`);
+the memory files. Written by Claude (via `/reflect`);
 curated by you (via `/curate` or manual editing).
 
 **Format for new entries:**
