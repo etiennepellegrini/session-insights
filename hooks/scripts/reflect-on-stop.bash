@@ -51,8 +51,8 @@ fi
 
 # --- Build reflection instructions from reflect.md
 if [ -f "$REFLECT_MD" ]; then
-    # Strip the $ARGUMENTS placeholder, escape for JSON
-    instructions=$(sed '/$ARGUMENTS/d' "$REFLECT_MD" | jq -Rs .)
+    # Strip YAML frontmatter (between --- delimiters) and $ARGUMENTS placeholder
+    instructions=$(sed '/^---$/,/^---$/d; /$ARGUMENTS/d' "$REFLECT_MD" | jq -Rs .)
     # Remove surrounding quotes that jq -Rs adds (we'll embed in our own JSON string)
     instructions=${instructions:1:-1}
 else
