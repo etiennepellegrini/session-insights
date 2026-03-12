@@ -1,3 +1,8 @@
+---
+description: Write 2-5 session insights to memory
+color: blue
+---
+
 Review this session and append 2-5 concise observations to `~/.claude/memory/session-insights.md`.
 
 Focus on interaction patterns, workflow preferences, communication dynamics, or technical learnings about how the user works — NOT summaries of what was accomplished.

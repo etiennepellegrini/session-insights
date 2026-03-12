@@ -1,3 +1,8 @@
+---
+description: Curate session insights (keep/merge/drop/promote)
+color: yellow
+---
+
 Review `~/.claude/memory/session-insights.md` and help me curate it.
 
 For each insight, categorize it as one of:
