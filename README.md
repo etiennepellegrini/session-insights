@@ -78,6 +78,10 @@ Tunable constants in the hook scripts:
 | `MAX_LINES` | `hooks/scripts/check-insights-size.bash` | 200 | Line count threshold for curation nudge |
 | `INSIGHTS_FILE` | both scripts | `~/.claude/memory/session-insights.md` | Path to insights file |
 
+## Notes
+
+**Resumed sessions:** If you resume a session with `--continue` or `--resume`, the Stop hook will analyze the **entire** transcript again when you exit, including portions already reflected upon. This can result in duplicate or overlapping insights. Use `/curate` to merge similar observations after long multi-part sessions.
+
 ## Design
 
 **Single source of truth:** The Stop hook reads `commands/reflect.md` at
