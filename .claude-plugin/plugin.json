@@ -1,5 +1,8 @@
 {
   "name": "session-insights",
   "version": "0.1.0",
-  "description": "Persistent session insights — Claude writes interaction observations at session end, you curate when the file grows. Provides /reflect (manual), /curate (prune), auto-reflection via Stop hook, and file-size nudge via SessionStart hook."
+  "description": "Persistent session insights — Claude writes interaction observations at session end, you curate when the file grows. Provides /reflect (manual), /curate (prune), auto-reflection via Stop hook, and file-size nudge via SessionStart hook.",
+  "author": "Etienne Pellegrini",
+  "license": "MIT",
+  "repository": "https://github.com/etiennepellegrini/session-insights"
 }

@@ -19,4 +19,11 @@ Tags: `[workflow]` `[communication]` `[technical]` `[preference]` `[blindspot]`
 Group under a `## YYYY-MM-DD` date header; reuse today's if it exists.
 Be specific and actionable, not generic.
 
+Example output:
+```markdown
+## 2026-03-11
+- [workflow] Prefers validating with external tools before manual review
+- [communication] Responds well to concise explanations with optional detail
+```
+
 $ARGUMENTS

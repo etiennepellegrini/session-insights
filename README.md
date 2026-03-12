@@ -50,11 +50,11 @@ Append to your CLAUDE.md (or equivalent memory file):
 ```markdown
 ### Session Insights
 
-**Read `~/.claude/memory/session-insights.md` at session start** if it exists.
-It contains observations from previous sessions about interaction patterns,
+**At session start, read `~/.claude/memory/session-insights.md`** for
+observations from previous sessions about interaction patterns, 
 workflow dynamics, and working style — things that help you work with me more
-effectively. Writing to this file is handled by the Stop hook and `/reflect`
-command; don't write to it unprompted.
+effectively. Writing to this file is handled by the `session-insights` plugin;
+don't write to it unprompted.
 ```
 
 ## Commands

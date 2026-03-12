@@ -1,7 +1,9 @@
 {
+  "description": "Session insights hooks: auto-reflection on Stop, curation nudge on SessionStart",
   "hooks": {
     "Stop": [
       {
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
@@ -13,6 +15,7 @@
     ],
     "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
