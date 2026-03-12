@@ -50,11 +50,8 @@ Append to your CLAUDE.md (or equivalent memory file):
 ```markdown
 ### Session Insights
 
-**At session start, read `~/.claude/memory/session-insights.md`** for
-observations from previous sessions about interaction patterns, 
-workflow dynamics, and working style — things that help you work with me more
-effectively. Writing to this file is handled by the `session-insights` plugin;
-don't write to it unprompted.
+**At session start, read `~/.claude/memory/session-insights.md`** for observations from previous sessions about interaction patterns, workflow dynamics, and working style — things that help you work with me more effectively. 
+Writing to this file is handled by the `session-insights` plugin; don't write to it unprompted.
 ```
 
 ## Commands
@@ -77,8 +74,8 @@ Tunable constants in the hook scripts:
 
 | Variable | File | Default | Purpose |
 |----------|------|---------|---------|
-| `MIN_TRANSCRIPT_KB` | `scripts/reflect-on-stop.bash` | 50 | Minimum transcript size to trigger auto-reflection |
-| `MAX_LINES` | `scripts/check-insights-size.bash` | 200 | Line count threshold for curation nudge |
+| `MIN_TRANSCRIPT_KB` | `hooks/scripts/reflect-on-stop.bash` | 50 | Minimum transcript size to trigger auto-reflection |
+| `MAX_LINES` | `hooks/scripts/check-insights-size.bash` | 200 | Line count threshold for curation nudge |
 | `INSIGHTS_FILE` | both scripts | `~/.claude/memory/session-insights.md` | Path to insights file |
 
 ## Design
@@ -108,10 +105,10 @@ session-insights/
 │   ├── reflect.md               # /session-insights:reflect
 │   └── curate.md                # /session-insights:curate
 ├── hooks/
-│   └── hooks.json               # Stop + SessionStart hook config
-├── scripts/
-│   ├── reflect-on-stop.bash     # Stop hook logic
-│   └── check-insights-size.bash # SessionStart hook logic
+│   ├── hooks.json               # Stop + SessionStart hook config
+│   └── scripts/
+│       ├── reflect-on-stop.bash     # Stop hook logic
+│       └── check-insights-size.bash # SessionStart hook logic
 ├── seed/
 │   └── session-insights.md      # Copy to ~/.claude/memory/
 └── README.md
